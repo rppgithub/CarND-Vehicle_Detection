@@ -18,31 +18,49 @@ Here I will consider the rubric points individually and describe how I addressed
 
 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-  The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called   some_file.py).
+  The code for this step is contained in the Cell $ 6 of the IPython notebook Vehicle_Detection.
 
-  I started by reading in all the vehicle and non-vehicle images. Here is an example of one of each of the vehicle and non-      vehicle classes:
+  I started by reading in all the vehicle and non-vehicle images. Here is an example of one of each of the vehicle and non- vehicle classes:
 
   alt text
 
   I then explored different color spaces and different skimage.hog() parameters (orientations, pixels_per_cell, and   cells_per_block). I grabbed random images from each of the two classes and displayed them to get a feel for what the skimage.hog() output looks like.
 
- Here is an example using the YCrCb color space and HOG parameters of orientations=8, pixels_per_cell=(8, 8) and cells_per_block=(2, 2):
+ Here is an example using the YUV  color space and HOG parameters of orientations=8, pixels_per_cell=(8, 8) and cells_per_block=(2, 2):
 
 alt text
 
 2. Explain how you settled on your final choice of HOG parameters.
 
-   I tried various combinations of parameters and...
+   I tried various combinations of parameters (RGB, HSV, LUV, YCrCb ) with different orientations and finally settled on
+   
+   
+     |Parameter      |Value|
+     |---------------|-----|
+     |color_space    |YUV  |
+     |orientations   |8    |
+     |pixels_per_cell|8    |
+   
 
 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using...
+   I do this in Cell 10. Used LinearSVM using only the parameters above since it gave me fairly good results. This was       arrived at after a great deal of experimentation. I chose to not use the spatial or color histogram features.
+   
+   ```
+   Using: 8 orientations 8 pixels per cell and 2 cells per block
+   Feature vector length: 4704
+   21.35 Seconds to train SVC...
+   Test Accuracy of SVC =  0.9882
+   My SVC predicts:  [ 1.  1.  1.  1.  1.  0.  0.  0.  1.  0.]
+   For these 10 labels:  [ 1.  1.  1.  1.  1.  0.  0.  0.  1.  0.]
+   0.00545 Seconds to predict 10 labels with SVC
+   ```
 
 ## Sliding Window Search
 
 1. Describe how (and identify where in your code) you implemented a sliding window search. How did you decide what scales to search and how much to overlap windows?
 
-   I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
+  This is done in Cell #20.
 
 alt text
 
