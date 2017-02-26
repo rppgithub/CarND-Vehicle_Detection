@@ -33,13 +33,12 @@ alt text
 2. Explain how you settled on your final choice of HOG parameters.
 
    I tried various combinations of parameters (RGB, HSV, LUV, YCrCb ) with different orientations and finally settled on
-   
-   
-     |Parameter      |Value|
-     |---------------|-----|
-     |color_space    |YUV  |
-     |orientations   |8    |
-     |pixels_per_cell|8    |
+  
+   |Parameter      |Value|
+   |---------------|-----|
+   |color_space    |YUV  |
+   |orientations   |8    |
+   |pixels_per_cell|8    |
    
 
 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
@@ -60,13 +59,30 @@ alt text
 
 1. Describe how (and identify where in your code) you implemented a sliding window search. How did you decide what scales to search and how much to overlap windows?
 
-  This is done in Cell #20.
+  This is done in Cell #20. 
+  
+  I narrowed the Region of interest by setting  
+  ```
+  y_start_stop = [int(image.shape[0]*0.55), int(image.shape[0]*0.8)]
+  x_start_stop = [int(image.shape[1]/2), None]
+  ```
+  This effectively reduced the size of the image to search. 
+  
+  After several iterations I landed on an overlapp of .8. 
+  
+  The window sizes were set to
+  ```
+  XY_WINDOWS = [(64,64),(96,96),(128,128)]
+  ```
+  
 
 alt text
 
 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 
-   Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result. Here are some example images:
+ Using the output of Cell #20 which is the list of windows to search, I search in Cell #15 in the search_windows   function to obtain a list of `hot windows`. To optimize the performance of the classifier the search was performed after extracting hog features in the color space YUV. I did not chose spatial or color histogram. After scaling, I ran it through the classifier and added to the list of ```hot_windows``` where there was a postive prediction. This did not completely eliminate the false positives.
+
+  
 
 alt text
 
@@ -74,7 +90,7 @@ Video Implementation
 
 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
-Here's a link to my video result
+  The link to the final video output is here: 
 
 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
