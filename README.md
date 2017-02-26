@@ -90,7 +90,8 @@ Video Implementation
 
 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
-  The link to the final video output is here: 
+   
+  <p>Here's a <a href="./result.mp4">Link to my video result</a></p>
 
 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
@@ -114,4 +115,4 @@ alt text
 
 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail? What could you do to make it more robust?
 
-  Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.
+ It took more than 3 hours for a 50 second output. This approach won't work in the real world. I would have preferred a deep learning approach to detect vehicles and want to experiment with YOLO. I see that a fellow colleague has demonstrated this using YELO and will attempt this at a later date.
