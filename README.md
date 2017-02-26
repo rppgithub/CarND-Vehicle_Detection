@@ -77,7 +77,7 @@ Here I will consider the rubric points individually and describe how I addressed
   ```
   
 
-alt text
+<img src="output_images/sliding_windows.png" alt="Sliding Windows">
 
 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 
