@@ -18,17 +18,18 @@ Here I will consider the rubric points individually and describe how I addressed
 
 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-  The code for this step is contained in the Cell $ 6 of the IPython notebook Vehicle_Detection.
+  The code for this step is contained in the Cell 6 of the IPython notebook Vehicle_Detection.
 
-  I started by reading in all the vehicle and non-vehicle images. Here is an example of one of each of the vehicle and non- vehicle classes:
+  I started by reading in all the vehicle and non-vehicle images. Here is an example of the vehicle and non- vehicle classes:
 
-  alt text
+ <img src="output_images/example_car_image.png" alt="Car/Not-Car image">
 
   I then explored different color spaces and different skimage.hog() parameters (orientations, pixels_per_cell, and   cells_per_block). I grabbed random images from each of the two classes and displayed them to get a feel for what the skimage.hog() output looks like.
 
- Here is an example using the YUV  color space and HOG parameters of orientations=8, pixels_per_cell=(8, 8) and cells_per_block=(2, 2):
+ Here are examples using the YUV  color space and HOG parameters of orientations=8, pixels_per_cell=(8, 8) and cells_per_block=(2, 2):
 
-alt text
+<img src="output_images/car-hog-ch-1.png" alt="Hog Features">
+
 
 2. Explain how you settled on your final choice of HOG parameters.
 
