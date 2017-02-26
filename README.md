@@ -40,6 +40,8 @@ Here I will consider the rubric points individually and describe how I addressed
    |color_space    |YUV  |
    |orientations   |8    |
    |pixels_per_cell|8    |
+   |Hog_Channel    |All  |
+   
    
 
 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
@@ -81,11 +83,11 @@ Here I will consider the rubric points individually and describe how I addressed
 
 2. Show some examples of test images to demonstrate how your pipeline is working. What did you do to optimize the performance of your classifier?
 
- Using the output of Cell #20 which is the list of windows to search, I search in Cell #15 in the search_windows   function to obtain a list of `hot windows`. To optimize the performance of the classifier the search was performed after extracting hog features in the color space YUV. I did not chose spatial or color histogram. After scaling, I ran it through the classifier and added to the list of ```hot_windows``` where there was a postive prediction. This did not completely eliminate the false positives.
+ Using the output of Cell #20 which is the list of windows to search, I search in Cell #15 in the search_windows   function to obtain a list of `hot windows`. To optimize the performance of the classifier the search was performed after extracting hog features in the color space YUV on all channels. I did not chose spatial or color histogram. After scaling, I ran it through the classifier and added to the list of ```hot_windows``` where there was a postive prediction. This did not completely eliminate the false positives.
 
   
 
-alt text
+alt text<img src="output_images/search_and_classify.png" alt="Search and Classify">
 
 Video Implementation
 
