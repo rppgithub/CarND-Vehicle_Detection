@@ -9,9 +9,10 @@ The goals / steps of this project are the following:
 * Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
 * Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a   heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimate a bounding box for vehicles detected.
-# Rubric Points
 
-Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
+ # Rubric Points
+ 
+  Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
 
 
 # Histogram of Oriented Gradients (HOG)
@@ -121,4 +122,4 @@ Video Implementation
 
 1. Briefly discuss any problems / issues you faced in your implementation of this project. Where will your pipeline likely fail? What could you do to make it more robust?
 
- It took more than 3 hours for a 50 second output. This approach won't work in the real world. I would have preferred a deep learning approach to detect vehicles and want to experiment with YOLO. I see that a fellow colleague has demonstrated this using YELO and will attempt this at a later date.
+ It took more than 3 hours for a 50 second output. This approach won't work in the real world. I would have preferred a deep learning approach to detect vehicles and want to experiment with YOLO. I see that a fellow colleague has demonstrated this using YOLO and will attempt this at a later date.
