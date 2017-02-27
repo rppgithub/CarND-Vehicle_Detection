@@ -9,7 +9,7 @@ The goals / steps of this project are the following:
 * Implement a sliding-window technique and use your trained classifier to search for vehicles in images.
 * Run your pipeline on a video stream (start with the test_video.mp4 and later implement on full project_video.mp4) and create a   heat map of recurring detections frame by frame to reject outliers and follow detected vehicles.
 * Estimate a bounding box for vehicles detected.
-## Rubric Points
+# Rubric Points
 
 Here I will consider the rubric points individually and describe how I addressed each point in my implementation.
 
@@ -18,7 +18,7 @@ Here I will consider the rubric points individually and describe how I addressed
 
 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-  The code for this step is contained in the Cell 6 of the IPython notebook Vehicle_Detection.
+  The code for this step is contained in the Cell 5 of the IPython notebook Vehicle_Detection.
 
   I started by reading in all the vehicle and non-vehicle images. Here is an example of the vehicle and non- vehicle classes:
 
@@ -92,46 +92,27 @@ Video Implementation
 
 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
+  The pipeline is in Cell 124.
    
   <p>Here's a <a href="./result_smoothing.mp4">Link to my video result</a></p>
 
 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-   I recorded the positions of positive detections in each frame of the video. From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions. I then used scipy.ndimage.measurements.label() to identify individual blobs in the heatmap. I then assumed each blob corresponded to a vehicle. I constructed bounding boxes to cover the area of each blob detected.
+   I store the positions of positive detections. From the positive detections I created a heatmap and used a threshold of 3 to capture the true positives. I then used scipy.ndimage.measurements.label() to identify individual blobs in the heatmap. I then assumed each blob corresponded to a vehicle. I constructed bounding boxes to cover the area of each blob detected.
 
-   Here's an example result showing the heatmap from a series of frames of video, the result of scipy.ndimage.measurements.label() and the bounding boxes then overlaid on the last frame of video:
+   Here's an example result showing the heatmap and the bounding boxes corresponding to these heat maps:
 
-  Here are six frames and their corresponding heatmaps:
-  <span class="image">
-  <table align="center">
-  <tr>
-  <th><img src="output_images/test1.jpg" alt="Test1"></th>
-  <th><img src="output_images/test1_heatmap.png" alt="Test1 Heatmap"></th>
-  </tr>
-  <tr>
-  <th><img src="output_images/test3.jpg" alt="Test1"></th>
-  <th><img src="output_images/test3_heatmap.png" alt="Test3 Heatmap"></th>
-  </tr>
-  <tr>
-  <th><img src="output_images/test4.jpg" alt="Test4"></th>
-  <th><img src="output_images/test3_heatmap.png" alt="Test4 Heatmap"></th>
-  </tr>
-  <tr>
-  <th><img src="output_images/test5.jpg" alt="Test1"></th>
-  <th><img src="output_images/test5_heatmap.png" alt="Test5 Heatmap"></th>
-  </tr>
-  <tr>
-  <th><img src="output_images/test6.jpg" alt="Test1"></th>
-  <th><img src="output_images/test6_heatmap.png" alt="Test6 Heatmap"></th>
-  </tr>
-  </table>
-  </span>
+  Here are the heatmaps:
+  
+  <img src="output_images/test1_heatmap.png" alt="Test1 Heatmap"></th>
+  <img src="output_images/test3_heatmap.png" alt="Test3 Heatmap"></th>
+  <img src="output_images/test5_heatmap.png" alt="Test5 Heatmap"></th>
+  <img src="output_images/test6_heatmap.png" alt="Test6 Heatmap"></th>
   
 
    Here the resulting boxes drawn onto the corresponding images:
    <img src="output_images/test1_boxes.png" alt="Test1 Boxes">
    <img src="output_images/test3_boxes.png" alt="Test3 Boxes">
-   <img src="output_images/test4_boxes.png" alt="Test4 Boxes">
    <img src="output_images/test5_boxes.png" alt="Test5 Boxes">
    <img src="output_images/test6_boxes.png" alt="Test6 Boxes">
  
