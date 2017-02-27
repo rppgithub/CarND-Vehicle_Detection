@@ -86,15 +86,14 @@ Here I will consider the rubric points individually and describe how I addressed
  Using the output of Cell #20 which is the list of windows to search, I search in Cell #15 in the search_windows   function to obtain a list of `hot windows`. To optimize the performance of the classifier the search was performed after extracting hog features in the color space YUV on all channels. I did not chose spatial or color histogram. After scaling, I ran it through the classifier and added to the list of ```hot_windows``` where there was a postive prediction. This did not completely eliminate the false positives.
 
   
-
-alt text<img src="output_images/search_and_classify.png" alt="Search and Classify">
+<img src="output_images/search_and_classify.png" alt="Search and Classify">
 
 Video Implementation
 
 1. Provide a link to your final video output. Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 
    
-  <p>Here's a <a href="./result_submission.mp4">Link to my video result</a></p>
+  <p>Here's a <a href="./result_smoothing.mp4">Link to my video result</a></p>
 
 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
@@ -103,16 +102,39 @@ Video Implementation
    Here's an example result showing the heatmap from a series of frames of video, the result of scipy.ndimage.measurements.label() and the bounding boxes then overlaid on the last frame of video:
 
   Here are six frames and their corresponding heatmaps:
+  <span class="image">
+  <table align="center">
+  <tr>
+  <th><img src="output_images/test1.jpg" alt="Test1"></th>
+  <th><img src="output_images/test1_heatmap.png" alt="Test1 Heatmap"></th>
+  </tr>
+  <tr>
+  <th><img src="output_images/test3.jpg" alt="Test1"></th>
+  <th><img src="output_images/test3_heatmap.png" alt="Test3 Heatmap"></th>
+  </tr>
+  <tr>
+  <th><img src="output_images/test4.jpg" alt="Test4"></th>
+  <th><img src="output_images/test3_heatmap.png" alt="Test4 Heatmap"></th>
+  </tr>
+  <tr>
+  <th><img src="output_images/test5.jpg" alt="Test1"></th>
+  <th><img src="output_images/test5_heatmap.png" alt="Test5 Heatmap"></th>
+  </tr>
+  <tr>
+  <th><img src="output_images/test6.jpg" alt="Test1"></th>
+  <th><img src="output_images/test6_heatmap.png" alt="Test6 Heatmap"></th>
+  </tr>
+  </table>
+  </span>
+  
 
-alt text
-
-  Here is the output of scipy.ndimage.measurements.label() on the integrated heatmap from all six frames:
-
-alt text
-
-  Here the resulting bounding boxes are drawn onto the last frame in the series:
-
-alt text
+   Here the resulting boxes drawn onto the corresponding images:
+   <img src="output_images/test1_boxes.png" alt="Test1 Boxes">
+   <img src="output_images/test3_boxes.png" alt="Test3 Boxes">
+   <img src="output_images/test4_boxes.png" alt="Test4 Boxes">
+   <img src="output_images/test5_boxes.png" alt="Test5 Boxes">
+   <img src="output_images/test6_boxes.png" alt="Test6 Boxes">
+ 
 
 ## Discussion
 
